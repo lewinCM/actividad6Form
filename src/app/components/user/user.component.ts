@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class UserComponent {
   listUser:string='Lista de Usuarios registrados'
+  img:string='../../../assets/blog-thumbnail-1.jpg'
 
 }
