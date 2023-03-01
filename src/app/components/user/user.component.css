@@ -2,7 +2,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50vh;
+    /* min-height: 50vh; */
     /* background: #646069; */
 }
 

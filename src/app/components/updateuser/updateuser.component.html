@@ -1,1 +1,53 @@
-<p>updateuser works!</p>
+<app-header></app-header>
+<section class="container">
+  <form novalidate [formGroup]="formModel" (ngSubmit)="getDataForm()">
+    <!--  nombre, email, edad, dni, password -->
+    <div class="my-2">
+      <label class="form-label" for="nombre">Nombre (*)</label>
+      <input class="form-control" id="nombre" type="text" formControlName="nombre">
+      <p class="error" *ngIf="checkControl('nombre', 'required')">El campo es requerido</p>
+
+      <p class="error" *ngIf="checkControl('nombre', 'minlength')">El nombre no puede ser mas corto de tres letras</p>
+    </div>
+
+    <div class="my-2">
+      <label class="form-label" for="email">Email (*)</label>
+      <input class="form-control" id="email" type="mail" formControlName="email">
+      <p class="error" *ngIf="checkControl('email', 'required')">El campo es requerido</p>
+
+      <p class="error" *ngIf="checkControl('email', 'pattern')">EL email debe ser valido</p>
+    </div>
+
+    <div class="my-2">
+      <label class="form-label" for="edad">Edad (*)</label>
+      <input class="form-control" id="edad" type="number" formControlName="edad">
+      <p class="error" *ngIf="checkControl('edad', 'required')">El campo es requerido</p>
+
+      <p class="error" *ngIf="checkControl('edad', 'min')">No te puede registrar si eres menor edad</p>
+    </div>
+
+    <div class="my-2">
+      <label class="form-label" for="dni">DNI (*)</label>
+      <input class="form-control" id="dni" type="text" formControlName="dni">
+      <p class="error" *ngIf="checkControl('dni', 'dnivalidator')">{{ formModel.get('dni')?.errors?.['dnivalidator'] }}</p>
+    </div>
+
+    <div class="my-2">
+      <label class="form-label" for="password">Password (*)</label>
+      <input class="form-control" id="password" type="password" formControlName="password">
+      <p class="error" *ngIf="checkControl('password', 'required')">El campo es requerido</p>
+    </div>
+
+    <div class="my-2">
+      <label class="form-label" for="repitepassword">Repite password</label>
+      <input class="form-control" id="repitepassword" type="password" formControlName="repitepassword">
+    </div>
+
+    <p class="error" *ngIf="formModel.hasError('checkpassword')">
+      Los campos password no son iguales
+    </p>
+
+    <!-- <input type="submit" value="Enviar" class="btn btn-danger" [disabled]="!formModel.valid"> -->
+    <input type="submit" value="Enviar" class="btn btn-danger">
+  </form>
+</section>

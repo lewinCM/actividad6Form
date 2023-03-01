@@ -1,8 +1,4 @@
-
-
-export interface User {
-
-
+export interface Results {
     _id?: string,
     id?: number,
     first_name: string,
@@ -10,7 +6,5 @@ export interface User {
     username: string,
     email: string,
     image: string,
-
-
-
+    password: string
 }
